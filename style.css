@@ -1,0 +1,164 @@
+/* Tailwind CDN으로 처리하지 않는 커스텀 스타일 */
+
+html {
+  scroll-behavior: smooth;
+  background-color: #0b0814;
+}
+
+/* 고정 헤더 높이만큼 앵커 이동 위치 보정 */
+section[id] {
+  scroll-margin-top: 4rem;
+}
+
+.section {
+  padding: 6rem 1.5rem;
+}
+
+.section-inner {
+  margin: 0 auto;
+  max-width: 72rem;
+}
+
+.section-title {
+  margin-bottom: 3rem;
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #fff;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  margin-top: 0.75rem;
+  width: 3rem;
+  height: 4px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #8b5cf6, #f97316);
+}
+
+.nav-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #94a3b8;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+.nav-link.active {
+  color: #fb923c;
+}
+
+.mobile-link {
+  display: block;
+  padding: 0.75rem 0;
+  font-weight: 500;
+  color: #cbd5e1;
+  transition: color 0.2s ease;
+}
+
+.mobile-link:hover {
+  color: #fb923c;
+}
+
+/* 스크롤 시 헤더 배경 */
+#header.scrolled {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(11, 8, 20, 0.8);
+  backdrop-filter: blur(12px);
+}
+
+.hero-glow {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.35), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(249, 115, 22, 0.18), transparent 40%);
+}
+
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  background-color: #15101f;
+  padding: 2rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 20px 25px -5px rgba(124, 58, 237, 0.1);
+}
+
+.tag {
+  display: inline-block;
+  border-radius: 9999px;
+  background-color: rgba(139, 92, 246, 0.15);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #c4b5fd;
+}
+
+/* 프로젝트 카드: 배경 레이어 + 하단 오버레이 + 텍스트 */
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 16rem;
+  overflow: hidden;
+}
+
+.project-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+
+/* 텍스트 가독성을 위해 아래쪽을 어둡게 */
+.project-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11, 8, 20, 0.9), rgba(11, 8, 20, 0.2));
+}
+
+.project-card:hover .project-bg {
+  transform: scale(1.05);
+}
+
+.project-content {
+  position: relative;
+}
+
+.project-card:hover .project-title {
+  color: #fb923c;
+}
+
+/* 스크롤 진입 애니메이션 */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
